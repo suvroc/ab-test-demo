@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> The power of end-to-end testing </title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@suvrocDev" />
+	<meta name="twitter:creator" content="@suvrocDev" />
+	<meta property="og:url" content="http://seleniumbook.com" />
+	<meta property="og:title" content="The power of end-to-end testing" />
+	<meta property="og:description" content="End-to-end testing is a great improvement in quality testing automation. It reflects the user experience the most of all tests.
+This book is a complete guide to Selenium tools. Both for beginners and experienced developers." />
+	<meta property="og:image" content="http://seleniumbook.com/images/twitter-card.png" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+	<!-- Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+	<!-- CSS -->
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/owl.theme.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/app.css">
+
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78887973-3', 'auto');
+	ga('send', 'pageview');
+
+	</script>
+	<script type="text/javascript">
+    window.smartlook||(function(d) {
+    var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+    var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+    c.charset='utf-8';c.src='//rec.smartlook.com/recorder.js';h.appendChild(c);
+    })(document);
+    smartlook('init', 'df9bf8b04b74d1a4e25fa9e6fad997599dcd9e10');
+</script>
+
+
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top menu">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+				<a class="navbar-brand" href="#">The power of end-to-end testing</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://www.diwebsity.com/">BLOG</a></li>
+					<li><a href="#author">CONTACT</a></li>
+					<li class="cta-btn"><a href="https://leanpub.com/end2end-testing-net">BUY BOOK</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<!--<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-centered">
+				<h1>The power of end-to-end testing</h1>
+				<h2>Selenium for .NET Developers</h2>
+			</div>
+		</div>
+	</div>-->
+
+	<header id="book1-desc">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-6 col-sm-6">
+					<div class="app-showcase wow fadeInDown" data-wow-delay=".5s">
+						<img src="images/cover6.png" class="img-responsive cover center-block" alt="">
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<div class="block wow fadeInRight" data-wow-delay="1s">
+						<h2>End-to-end testing</h2>
+						<p>
+							End-to-end testing is a <b>great improvement in quality</b> testing automation. It reflects the user experience in
+							tests.
+						</p>
+						<p>
+							This book is a complete guide to <b>Selenium tools</b>. Good choice both for begginers and experienced developers.
+						</p>
+						<p>
+							End-to-end tests just make sure, that the <b>system works fine</b>, saving developer and tester time after all.
+						</p>
+						<a class="btn btn-default btn-lg cta-btn btn-block" href="https://leanpub.com/end2end-testing-net">BUY BOOK</a>
+						<div class="social-bar">
+							<!-- AddToAny BEGIN -->
+							<div class="a2a_kit a2a_kit_size_32 a2a_default_style col-centered">
+								<a class="a2a_button_facebook"></a>
+								<a class="a2a_button_twitter"></a>
+								<a class="a2a_button_google_plus"></a>
+								<a class="a2a_button_linkedin"></a>
+							</div>
+							<script async src="https://static.addtoany.com/menu/page.js"></script>
+							<!-- AddToAny END -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section id="service">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div class="block wow fadeInLeft" data-wow-delay=".7s">
+						<div class="">
+							<h2>If any of this situations sound familiar</h2>
+						</div>
+						<div class="cloud-list">
+							<div class="cloud-list-item">
+								<div class="panel">
+									application crashed again during important presentation to the customer
+								</div>
+							</div>
+							<div class="cloud-list-item">
+								<div class="panel">
+									testers still fixing old tests and they don't have time for preparing new test cases
+								</div>
+							</div>
+							<div class="cloud-list-item">
+								<div class="panel">
+									the easiest method to reduce testing time is to omit some test cases, that may decrease the sotfware quality
+								</div>
+							</div>
+							<div class="cloud-list-item">
+								<div class="panel">
+									after change in one place of application other functionality brokes
+								</div>
+							</div>
+							<div class="cloud-list-item">
+								<div class="panel">
+									testing takes a lot of time, but you still find new errors
+								</div>
+							</div>
+							<div class="cloud-list-item">
+								<div class="panel">
+									creating application for users from all over the world, you want to be sure, that everything works as you designed on any
+									device
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="dream-box">
+		<div class="container">
+			<div class="row">
+				<div class="block wow fadeInLeft" data-wow-delay=".7s">
+					<div class="">
+						<h2>Probably you would like to</h2>
+					</div>
+					<div class="cloud-list">
+							<div class="cloud-list-item">
+								<div class="panel">
+									show manager or customer, that application works reliably, so develeopment team creates a high
+								</div>
+							</div>
+							<div class="cloud-list-item">
+								<div class="panel">
+									deploy the application and be sure, that it works
+								</div>
+							</div>
+							<div class="cloud-list-item">
+								<div class="panel">
+									transform business requirements into tests easily
+								</div>
+							</div>
+							<div class="cloud-list-item">
+								<div class="panel">
+									design your tests and execute them again and again
+								</div>
+							</div>
+							<div class="cloud-list-item">
+								<div class="panel">
+									increase software reliability by test completeness
+								</div>
+							</div>
+							<div class="cloud-list-item">
+								<div class="panel">
+									enabl testers team to develop all key test cases on time
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+
+
+
+	<section id="book2-desc">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-6 col-sm-6">
+					<div class="app-showcase wow fadeInDown" data-wow-delay=".5s">
+						<img src="images/cover6.png" class="img-responsive cover center-block" alt="">
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<div class="block wow fadeInRight" data-wow-delay="1s">
+						<h2>End-to-end testing</h2>
+						<p>
+							This book can help you to automate testing in your company. It describes a set of tools to begin or develop yourself in the
+							testing art. 
+						</p>
+						<p>
+							You will be able to automate simple manual tests and save time for preparing more advanced tests for
+							different devices (mobile, tablet etc.). You will also easily keep your tests up to date.
+						</p>
+						<a class="btn btn-default btn-lg cta-btn btn-block" href="https://leanpub.com/end2end-testing-net">BUY BOOK</a>
+						<div class="social-bar">
+							<!-- AddToAny BEGIN -->
+							<div class="a2a_kit a2a_kit_size_32 a2a_default_style col-centered">
+								<a class="a2a_button_facebook"></a>
+								<a class="a2a_button_twitter"></a>
+								<a class="a2a_button_google_plus"></a>
+								<a class="a2a_button_linkedin"></a>
+							</div>
+							<script async src="https://static.addtoany.com/menu/page.js"></script>
+							<!-- AddToAny END -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="testimonial">
+		<div class="container">
+			<div class="row">
+				<div class="media wow fadeInUp animated" data-wow-delay=".7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+					<div class="col-md-4 col-sm-4">
+						<div class="row testimonial-person">
+
+							<!--<div class="col-md-6">
+								<img class="img-responsive" src="images/albert.png" alt="Image">
+							</div>-->
+
+							<div class="media-body col-md-6">
+								<h4 class="media-heading">Albert Sklodowski</h4>
+								<p class="profession">.NET Developer</p>
+								<p class="social-link">
+									<a class="btn-linkedin" href="https://www.linkedin.com/in/albertsklodowski"><i class="fa fa-linkedin"></i></a>
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="panel opinion">
+									The most important aspect of software quality is to meet the requirements of the end user. End-to-end testing allows you
+									to validate your software against user acceptance criteria. Adrian Sroka's book is a great tutorial on how to use
+									Selenium to write your end-to-end tests correctly and boost the quality of your software without much effort.
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 col-sm-4">
+						<div class="row testimonial-person">
+
+							<!--<div class="col-md-6">
+								<img class="img-responsive" src="images/team-1.png" alt="Image">
+							</div>-->
+
+							<div class="media-body col-md-6">
+								<h4 class="media-heading">Konrad Kokosa</h4>
+								<p class="profession">.NET Developer</p>
+								<p class="social-link">
+									<a class="btn-linkedin" href="https://pl.linkedin.com/in/kkokosa"><i class="fa fa-linkedin"></i></a>
+									<a class="btn-twitter" href="https://twitter.com/konradkokosa"><i class="fa fa-twitter"></i></a>
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="panel opinion">
+									Selenium succinctly and without going around the bush. In a fast way you will learn, chapter by chapter, from what Selenium
+									is to how to create a BDD end-to-end tests with the help of SpecFlow. Fully recommended!
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 col-sm-4">
+						<div class="row testimonial-person">
+
+							<!--<div class="col-md-6">
+								<img class="img-responsive" src="images/team-1.png" alt="Image">
+							</div>-->
+
+							<div class="media-body col-md-6">
+								<h4 class="media-heading">Katarzyna Rzążewska</h4>
+								<p class="profession">Web Developer</p>
+								<p class="social-link">
+									&nbsp;
+									<!--<a class="btn-facebook" href=""><i class="fa fa-facebook"></i></a>
+									<a class="btn-twitter" href=""><i class="fa fa-twitter"></i></a>-->
+								</p>
+							</div>
+						</div>
+						<div class="row">
+
+							<div class="col-md-12">
+								<div class="panel opinion">
+									I knew nothing about end-to-end testing before and learnt a lot from this book. The book explains basic concepts and gives
+									many examples, which make this topic easy to understand.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="feature">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="wow pulse text-center" data-wow-delay=".5s">
+						<h2 class="toc">Table of contents</h2>
+						<!--<p>
+                            Every developer is deserved to have a better living
+                        </p>-->
+					</div>
+				</div>
+			</div>
+			<div id="shortTOC">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<div class="block">
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">2. End-to-end testing</h4>
+									<p>What is it and why it is important?</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">7. Location UI elements</h4>
+									<p>What method is the best for you?</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<div class="block">
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">12. Page Objects pattern</h4>
+									<p>Pattern for effective test creation</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">14. Creating test language with SpecFlow</h4>
+									<p>How to include business side in test creation process?</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="text-center media wow fadeInDown" data-wow-delay=".5s">
+							<button onclick="showTableOfContents()" class="btn expand-btn">See more</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="fullTOC" style="display:none;">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<div class="block">
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">1. Introduction</h4>
+									<p>&nbsp;</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">2. End-to-end testing</h4>
+									<p>What is it and why it is important?</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">3. Selenium UI</h4>
+									<p>The tool for manual testers</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">4. First test</h4>
+									<p>Taking a first step into the testing world</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">5. Drivers</h4>
+									<p>How to run tests into the browser?</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">6. Navigation</h4>
+									<p>Journey between the pages in testing process</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">7. Location UI elements</h4>
+									<p>What method is the best for you?</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">8. Making actions</h4>
+									<p>How to simulate user behaviour?</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">9. Cleaning after test</h4>
+									<p>How to keep your environment clean?</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">10. Waiting for elements</h4>
+									<p>Working with asynchronous page updates</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-md-6 col-sm-6">
+						<div class="block">
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">11. Handling errors</h4>
+									<p>When something goes wrong</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">12. Real work use case</h4>
+									<p>Real world example</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">13. Page Objects pattern</h4>
+									<p>Pattern for effective test creation</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">14. Test multiple cases</h4>
+									<p>Convenient testing for different data</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">15. Creating BDD tests with SpecFlow</h4>
+									<p>How to include business side in test creation process?</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">16. Protractor for AngularJS</h4>
+									<p>End-to-end testing for AngularJS</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">17. The power of JavaScript</h4>
+									<p>Work with dynamically created controls</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">18. Selenium tests maintenance</h4>
+									<p>The solution to manage your test after writing it</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">19. Designing good tests</h4>
+									<p>Before we start writing code</p>
+								</div>
+							</div>
+							<div class="media wow fadeInDown" data-wow-delay=".5s">
+								<div class="media-body">
+									<h4 class="media-heading">Appendix 1 Test on multiple browsers</h4>
+									<p>Make sure that your software works on any device</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="text-center media wow fadeInDown" data-wow-delay=".5s">
+							<button onclick="hideTableOfContents()" class="btn expand-btn">See less</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="author">
+		<div class="container">
+			<div class="row">
+				<div class=" col-lg-offset-2 col-lg-3 col-md-offset-1 col-md-3 col-sm-3 col-xs-6">
+					<img src="images/author2.jpg" class="img-responsive" alt="">
+					<div class="social-bar text-center">
+						<a href="mailto:suvroc.book@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+						<a href="https://twitter.com/suvrocDev"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+						<a href="https://www.facebook.com/diwebsity/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						<a href="https://github.com/suvroc"><i class="fa fa-github" aria-hidden="true"></i></a>
+						<a href="https://www.linkedin.com/in/adriansroka"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						<a href="http://stackoverflow.com/users/4772988/suvroc"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a>
+
+
+						
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-8 col-sm-8">
+					<div class="block">
+						<h2>Adrian Sroka</h2>
+						<p>Web developer working on front-end and back-end side. Associated with .NET environment for a long time. Lazy enough
+							to automate the development process on each phase.</p>
+						<p>
+							Life enthusiast. Passionate of quality, good food, trekking and Frisbee Ultimate.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<nav class="navbar navbar-default" role="navigation">
+						<div class="container-fluid">
+							  <div class="navbar-header">
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          <a class="navbar-brand" href="#">
+                              <img src="images/footer-logo.png" alt="">
+                          </a>
+                        </div>
+
+                       <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
+                          <ul class="nav navbar-nav ">
+                            <li><a href="#">Download</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Developers</a></li>
+                            <li><a href="#">Privacy</a></li>
+                          </ul>
+                           <div class="social-link pull-right">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>    
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>    
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+						</div>
+
+				</div>
+				</nav>
+			</div>
+		</div>
+		</div>
+	</footer>-->
+
+
+
+
+
+
+	<!-- Js -->
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+         new WOW(
+            ).init();
+        </script>
+
+</body>
+
+</html>
